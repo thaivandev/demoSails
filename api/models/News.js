@@ -1,5 +1,5 @@
 /**
- * User.js
+ * News.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -13,38 +13,33 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    userName: {
-      'type': 'string',
-      'required': true
-    },
-    password: {
-      'type': 'string',
-      'required': true
-    },
     name: {
       'type': 'string',
-    },
-    numberPhone: {
-      'type': 'string',
-      'unique': true,
       'required': true
     },
-    address: {
+    idItem: {
+      'type': 'number',
+    },
+    type: {
       'type': 'string',
     },
-    email: {
+    photo: {
       'type': 'string',
-      'required': true,
-      'isEmail': true,
-      'unique': true,
     },
-    token: {
-      'type': 'string',
-      'allowNull': true
+    view: {
+      'type': 'number',
     },
-    refreshToken: {
+    content: {
       'type': 'string',
-      'allowNull': true
+    },
+    keywords: {
+      'type': 'string',
+    },
+    description: {
+      'type': 'string',
+    },
+    title: {
+      'type': 'string',
     }
 
 

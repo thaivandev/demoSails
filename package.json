@@ -8,7 +8,7 @@
     "@sailshq/connect-redis": "^3.2.1",
     "@sailshq/lodash": "^3.10.3",
     "@sailshq/socket.io-redis": "^5.2.0",
-    "bcrypt-nodejs": "0.0.3",
+    "bcrypt": "^5.0.1",
     "express-jwt": "^6.0.0",
     "grunt": "1.0.4",
     "http-auth": "^4.1.2",
@@ -19,7 +19,8 @@
     "sails-hook-grunt": "^4.0.0",
     "sails-hook-orm": "^3.0.1",
     "sails-hook-sockets": "^2.0.0",
-    "sails-mysql": "^1.0.1"
+    "sails-mysql": "^1.0.1",
+    "translate": "^1.2.3"
   },
   "devDependencies": {
     "eslint": "5.16.0"
