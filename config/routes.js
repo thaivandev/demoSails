@@ -23,7 +23,14 @@ module.exports.routes = {
   'POST /api/user': 'UserController.createUser',
   'POST /api/login': 'UserController.login',
 
-  'GET /api/users': 'UserController.users'
+  'GET /api/users': 'UserController.users',
+
+  'POST /api/newsItems': 'NewsItemController.createNewsItems',
+  'PUT /api/newsItems': 'NewsItemController.updateNewsItems',
+  'GET /api/newsItem': 'NewsItemController.newsItem',
+  'GET /api/newsItems': 'NewsItemController.newsItems',
+  'DELETE /api/newsItems': 'NewsItemController.deleteNewsItems',
+  'GET /api/test': 'TestController.test',
 
 
   /***************************************************************************

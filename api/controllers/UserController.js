@@ -7,6 +7,7 @@
 
 module.exports = {
   createUser: async (req, res) => {
+    const bcrypt = require('bcrypt');
     const userContent = req.body;
     User.find({ email: userContent.email }).exec(async (err, user) => {
       if (err) {
@@ -23,9 +24,12 @@ module.exports = {
         });
       }
 
+      const saltRounds = 10;
+      const newPassword = bcrypt.hashSync(userContent.password, saltRounds);
+
       const createUser = {
         userName: userContent.userName,
-        password: userContent.password,
+        password: newPassword,
         email: userContent.email,
         token: await sails.helpers.generateJwt.with({
           user: userContent,
@@ -73,9 +77,13 @@ module.exports = {
   },
 
   login: async (req, res) => {
+    const bcrypt = require('bcrypt');
+    // const translate = require("translate");
+    // const bar = await translate("Hello world", { to: "es" });
+    // console.log('translate', bar);
     const data = req.body;
 
-    await User.findOne({ email: data.email, password: data.password }).exec(async (err, userData) => {
+    await User.findOne({ email: data.email}).exec(async (err, userData) => {
       if (err) {
         return res.serverError({
           success: false,
@@ -85,6 +93,15 @@ module.exports = {
 
       if (!userData) {
         return res.status(404).json({
+          success: false,
+          message: 'Not found User!'
+        });
+      }
+
+      const match = await bcrypt.compare(data.password, userData.password);
+
+      if (!match) {
+        return res.status(400).json({
           success: false,
           message: 'Pass wrong'
         });

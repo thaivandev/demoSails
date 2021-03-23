@@ -21,5 +21,6 @@ module.exports.policies = {
   '*': 'isLoggedIn',
   'user/login': true,
   'user/createUser': true,
+  'test/*': true,
 
 };

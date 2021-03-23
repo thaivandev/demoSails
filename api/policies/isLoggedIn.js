@@ -3,6 +3,11 @@
 module.exports = async function isLoggedIn(req, res, next) {
   const accessTokenSecret = 'secret';
   const tokenFromClient = req.headers.authorization;
+  if (!tokenFromClient) {
+    return res.status(403).json({
+      message: 'Unauthorized.'
+    });
+  }
   const newToken = tokenFromClient.replace('Bearer ', '');
   console.log('tokenFromClient', tokenFromClient, newToken);
 
